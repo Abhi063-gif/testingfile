@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Certificate of Participation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 297mm;
+    height: 210mm;
+  }
+
+  .certificate {
+    width: 297mm;
+    height: 210mm;
+    background: #FFFBF5;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  /* Top sunrise sweep */
+  .top-sweep {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50mm;
+    background: linear-gradient(135deg, #C2410C 0%, #EA580C 40%, #F97316 70%, #FB923C 100%);
+    clip-path: ellipse(160% 100% at 50% 0%);
+  }
+
+  .top-sweep::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(255,251,245,0.1) 100%);
+  }
+
+  /* Bottom wave */
+  .bottom-sweep {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 20mm;
+    background: linear-gradient(135deg, #7C2D12, #9A3412, #C2410C);
+    clip-path: ellipse(120% 100% at 50% 100%);
+  }
+
+  /* Outer border */
+  .cert-border {
+    position: absolute;
+    top: 6mm; left: 6mm; right: 6mm; bottom: 6mm;
+    border: 2px solid rgba(194,65,12,0.3);
+  }
+
+  /* Header on orange */
+  .header {
+    position: absolute;
+    top: 7mm;
+    left: 14mm;
+    right: 14mm;
+    height: 32mm;
+    display: flex;
+    align-items: center;
+    gap: 5mm;
+    z-index: 10;
+  }
+
+  .logo-ring {
+    width: 20mm;
+    height: 20mm;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-size: 6.5px;
+    font-weight: 700;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .college-name {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 14pt;
+    color: #FFFFFF;
+    text-align: center;
+    flex: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    line-height: 1.2;
+  }
+
+  .college-sub {
+    font-size: 7pt;
+    color: rgba(255,240,220,0.9);
+    text-align: center;
+    margin-top: 1mm;
+    letter-spacing: 0.5px;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  /* Gold ribbon badge */
+  .ribbon-badge {
+    position: absolute;
+    top: 43mm;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+  }
+
+  .ribbon-inner {
+    display: inline-block;
+    background: linear-gradient(135deg, #854d0e, #a16207, #ca8a04);
+    color: #FEF3C7;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 10pt;
+    padding: 2.5mm 16mm;
+    letter-spacing: 1.5px;
+    box-shadow: 0 3px 12px rgba(120,60,0,0.3);
+  }
+
+  /* Content area */
+  .content {
+    position: absolute;
+    top: 57mm;
+    left: 14mm;
+    right: 14mm;
+    text-align: center;
+  }
+
+  .awarded-text {
+    font-size: 9pt;
+    color: #92400E;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+
+  .participant-name {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 22pt;
+    font-weight: 600;
+    color: #7C2D12;
+    margin: 2mm 0;
+  }
+
+  .dept-badge {
+    display: inline-block;
+    border: 1px solid rgba(194,65,12,0.4);
+    color: #C2410C;
+    font-size: 8.5pt;
+    padding: 1mm 5mm;
+    background: rgba(255,237,213,0.6);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 3mm;
+  }
+
+  .cert-text {
+    font-size: 10.5pt;
+    color: #3B1506;
+    line-height: 1.8;
+  }
+
+  .cert-text em {
+    color: #9A3412;
+    font-style: italic;
+  }
+
+  /* Signatures */
+  .signatures {
+    position: absolute;
+    bottom: 22mm;
+    left: 14mm;
+    right: 14mm;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .sig-block { text-align: center; }
+
+  .sig-line {
+    width: 32mm;
+    height: 1px;
+    background: #C2410C;
+    margin: 0 auto 1.5mm;
+  }
+
+  .sig-name {
+    font-size: 8pt;
+    color: #7C2D12;
+    font-weight: 600;
+  }
+
+  .sig-role {
+    font-size: 7pt;
+    color: #9A3412;
+    font-style: italic;
+  }
+
+  .cert-id {
+    position: absolute;
+    bottom: 8.5mm;
+    left: 14mm;
+    font-size: 6.5pt;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Courier New', monospace;
+    z-index: 10;
+  }
+
+  .issued-date {
+    position: absolute;
+    bottom: 8.5mm;
+    right: 14mm;
+    font-size: 6.5pt;
+    color: rgba(255,255,255,0.7);
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+<div class="certificate">
+  <div class="top-sweep"></div>
+  <div class="bottom-sweep"></div>
+  <div class="cert-border"></div>
+
+  <div class="header">
+    <div class="logo-ring">COLLEGE<br/>LOGO</div>
+    <div style="flex:1;text-align:center;">
+      <div class="college-name">{{collegeName}}</div>
+      <div class="college-sub">{{collegeTagline}}</div>
+    </div>
+    <div class="logo-ring">IIC</div>
+  </div>
+
+  <div class="ribbon-badge">
+    <div class="ribbon-inner">✦ Certificate of Participation ✦</div>
+  </div>
+
+  <div class="content">
+    <div class="awarded-text">This is to certify that</div>
+    <div class="participant-name">{{participantName}}</div>
+    <div><span class="dept-badge">{{department}}</span></div>
+    <div class="cert-text">
+      has participated in <em>'{{eventTitle}}'</em><br/>
+      organized by <em>{{organiserName}}</em><br/>
+      held on <strong>{{eventDate}}</strong> at <strong>{{venue}}</strong>
+    </div>
+  </div>
+
+  <div class="signatures">
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig1Name}}</div>
+      <div class="sig-role">{{sig1Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig2Name}}</div>
+      <div class="sig-role">{{sig2Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig3Name}}</div>
+      <div class="sig-role">{{sig3Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig4Name}}</div>
+      <div class="sig-role">{{sig4Title}}</div>
+    </div>
+  </div>
+
+  <div class="cert-id">Certificate ID: {{certificateId}}</div>
+  <div class="issued-date">Issued: {{issuedDate}}</div>
+</div>
+</body>
+</html>

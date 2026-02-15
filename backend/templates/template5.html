@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Certificate of Participation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 297mm;
+    height: 210mm;
+  }
+
+  .certificate {
+    width: 297mm;
+    height: 210mm;
+    background: #F5E6C8;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Libre Baskerville', serif;
+  }
+
+  /* Aged paper texture overlay */
+  .texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(139,90,43,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(139,90,43,0.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Triple ornate border */
+  .border1 {
+    position: absolute;
+    top: 5mm; left: 5mm; right: 5mm; bottom: 5mm;
+    border: 2px solid #8B5E3C;
+  }
+  .border2 {
+    position: absolute;
+    top: 7mm; left: 7mm; right: 7mm; bottom: 7mm;
+    border: 1px solid rgba(139,94,60,0.5);
+  }
+  .border3 {
+    position: absolute;
+    top: 9mm; left: 9mm; right: 9mm; bottom: 9mm;
+    border: 3px double #8B5E3C;
+  }
+
+  /* Top sepia banner */
+  .banner-top {
+    position: absolute;
+    top: 11mm;
+    left: 11mm;
+    right: 11mm;
+    height: 30mm;
+    background: linear-gradient(180deg, rgba(139,94,60,0.15) 0%, transparent 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5mm;
+    border-bottom: 1px solid rgba(139,94,60,0.3);
+  }
+
+  .logo-seal {
+    width: 20mm;
+    height: 20mm;
+    border-radius: 50%;
+    border: 2px solid #8B5E3C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8B5E3C;
+    font-size: 6.5px;
+    font-weight: 700;
+    text-align: center;
+    background: rgba(245,230,200,0.8);
+  }
+
+  .college-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 22pt;
+    color: #5C3317;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  .college-sub {
+    font-size: 7pt;
+    color: #7A5C3A;
+    text-align: center;
+    font-style: italic;
+    margin-top: 1mm;
+    letter-spacing: 0.5px;
+  }
+
+  /* Ornamental divider */
+  .ornament-divider {
+    position: absolute;
+    top: 42mm;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18pt;
+    color: #8B5E3C;
+    letter-spacing: 4mm;
+    white-space: nowrap;
+  }
+
+  /* Certificate of participation heading */
+  .cert-heading {
+    position: absolute;
+    top: 52mm;
+    left: 12mm;
+    right: 12mm;
+    text-align: center;
+  }
+
+  .cert-heading-text {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 18pt;
+    color: #5C3317;
+    letter-spacing: 2px;
+  }
+
+  /* Body */
+  .body-wrap {
+    position: absolute;
+    top: 68mm;
+    left: 20mm;
+    right: 20mm;
+    text-align: center;
+  }
+
+  .certify-text {
+    font-size: 9pt;
+    color: #5C4030;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+
+  .participant-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22pt;
+    color: #5C3317;
+    font-style: italic;
+    margin: 2mm 0;
+    border-bottom: 1px solid rgba(139,94,60,0.4);
+    padding-bottom: 1mm;
+    display: inline-block;
+  }
+
+  .dept-text {
+    font-size: 9pt;
+    color: #7A5C3A;
+    margin: 2mm 0;
+    font-style: italic;
+  }
+
+  .detail-text {
+    font-size: 10pt;
+    color: #4A3520;
+    line-height: 1.8;
+    margin-top: 2mm;
+  }
+
+  .detail-text em {
+    color: #5C3317;
+    font-style: italic;
+  }
+
+  /* Signatures footer */
+  .signatures {
+    position: absolute;
+    bottom: 19mm;
+    left: 12mm;
+    right: 12mm;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .sig-block { text-align: center; }
+
+  .sig-line {
+    width: 32mm;
+    height: 1px;
+    background: #8B5E3C;
+    margin: 0 auto 1.5mm;
+  }
+
+  .sig-name {
+    font-size: 7.5pt;
+    color: #5C3317;
+    font-weight: 700;
+  }
+
+  .sig-role {
+    font-size: 7pt;
+    color: #8B5E3C;
+    font-style: italic;
+  }
+
+  .cert-id {
+    position: absolute;
+    bottom: 9mm;
+    left: 12mm;
+    font-size: 6.5pt;
+    color: #A07850;
+    font-family: 'Courier New', monospace;
+  }
+
+  .issued-date {
+    position: absolute;
+    bottom: 9mm;
+    right: 12mm;
+    font-size: 6.5pt;
+    color: #A07850;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="certificate">
+  <div class="texture"></div>
+  <div class="border1"></div>
+  <div class="border2"></div>
+  <div class="border3"></div>
+
+  <div class="banner-top">
+    <div class="logo-seal">COLLEGE<br/>LOGO</div>
+    <div style="text-align:center; flex:1;">
+      <div class="college-name">{{collegeName}}</div>
+      <div class="college-sub">{{collegeTagline}}</div>
+    </div>
+    <div class="logo-seal">IIC</div>
+  </div>
+
+  <div class="ornament-divider">✦ ✦ ✦</div>
+
+  <div class="cert-heading">
+    <div class="cert-heading-text">Certificate of Participation</div>
+  </div>
+
+  <div class="body-wrap">
+    <div class="certify-text">This is to certify with honour and distinction that</div>
+    <div><span class="participant-name">{{participantName}}</span></div>
+    <div class="dept-text">of <em>{{department}}</em></div>
+    <div class="detail-text">
+      has participated in <em>'{{eventTitle}}'</em><br/>
+      organized by <em>{{organiserName}}</em><br/>
+      held on <strong>{{eventDate}}</strong> at <strong>{{venue}}</strong>
+    </div>
+  </div>
+
+  <div class="signatures">
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig1Name}}</div>
+      <div class="sig-role">{{sig1Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig2Name}}</div>
+      <div class="sig-role">{{sig2Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig3Name}}</div>
+      <div class="sig-role">{{sig3Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig4Name}}</div>
+      <div class="sig-role">{{sig4Title}}</div>
+    </div>
+  </div>
+
+  <div class="cert-id">Certificate ID: {{certificateId}}</div>
+  <div class="issued-date">Issued: {{issuedDate}}</div>
+</div>
+</body>
+</html>

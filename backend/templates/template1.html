@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Certificate of Participation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 297mm;
+    height: 210mm;
+    background: #fff;
+  }
+
+  .certificate {
+    width: 297mm;
+    height: 210mm;
+    position: relative;
+    background: #fffef9;
+    overflow: hidden;
+    font-family: 'Crimson Text', serif;
+  }
+
+  /* Ornate outer border */
+  .outer-border {
+    position: absolute;
+    top: 8mm;
+    left: 8mm;
+    right: 8mm;
+    bottom: 8mm;
+    border: 3px solid #8B1A1A;
+    box-shadow: inset 0 0 0 2px #D4A017, inset 0 0 0 5px #8B1A1A;
+  }
+
+  /* Inner decorative border */
+  .inner-border {
+    position: absolute;
+    top: 15mm;
+    left: 15mm;
+    right: 15mm;
+    bottom: 15mm;
+    border: 1px solid #D4A017;
+  }
+
+  /* Corner ornaments */
+  .corner {
+    position: absolute;
+    width: 20mm;
+    height: 20mm;
+    font-size: 28px;
+    color: #8B1A1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .corner.tl { top: 5mm; left: 5mm; }
+  .corner.tr { top: 5mm; right: 5mm; transform: scaleX(-1); }
+  .corner.bl { bottom: 5mm; left: 5mm; transform: scaleY(-1); }
+  .corner.br { bottom: 5mm; right: 5mm; transform: scale(-1, -1); }
+
+  /* Header */
+  .header {
+    position: absolute;
+    top: 18mm;
+    left: 20mm;
+    right: 20mm;
+    height: 30mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-placeholder {
+    width: 22mm;
+    height: 22mm;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8B1A1A 0%, #D4A017 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    font-weight: 700;
+    text-align: center;
+    padding: 3px;
+  }
+
+  .college-info {
+    text-align: center;
+    flex: 1;
+    padding: 0 8mm;
+  }
+
+  .college-name {
+    font-family: 'Cinzel', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    color: #8B1A1A;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .college-subtitle {
+    font-size: 7.5pt;
+    color: #555;
+    margin-top: 1mm;
+    line-height: 1.5;
+  }
+
+  /* Red divider line */
+  .divider {
+    position: absolute;
+    top: 51mm;
+    left: 20mm;
+    right: 20mm;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #8B1A1A 20%, #D4A017 50%, #8B1A1A 80%, transparent);
+  }
+
+  /* Event title */
+  .event-section {
+    position: absolute;
+    top: 54mm;
+    left: 20mm;
+    right: 20mm;
+    text-align: center;
+  }
+
+  .workshop-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12.5pt;
+    color: #8B1A1A;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .organized-by {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 1mm;
+    font-style: italic;
+  }
+
+  .iic-name {
+    font-size: 10pt;
+    color: #333;
+    font-weight: 600;
+    margin-top: 0.5mm;
+  }
+
+  /* Certificate badge */
+  .cert-badge {
+    position: absolute;
+    top: 72mm;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #8B1A1A;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 11pt;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 3mm 12mm;
+    text-transform: uppercase;
+  }
+
+  /* Body text */
+  .body-text {
+    position: absolute;
+    top: 85mm;
+    left: 25mm;
+    right: 25mm;
+    text-align: left;
+    font-size: 11.5pt;
+    line-height: 1.8;
+    color: #222;
+  }
+
+  .participant-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14pt;
+    color: #8B1A1A;
+    font-weight: 600;
+  }
+
+  .event-name-inline {
+    font-style: italic;
+    font-weight: 600;
+    color: #333;
+  }
+
+  /* Signatures footer */
+  .signatures {
+    position: absolute;
+    bottom: 20mm;
+    left: 20mm;
+    right: 20mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .sig-block {
+    text-align: center;
+    min-width: 40mm;
+  }
+
+  .sig-line {
+    width: 38mm;
+    height: 1px;
+    background: #333;
+    margin: 0 auto 1mm;
+  }
+
+  .sig-name {
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: #222;
+  }
+
+  .sig-title {
+    font-size: 7.5pt;
+    color: #666;
+    font-style: italic;
+  }
+
+  /* Certificate ID */
+  .cert-id {
+    position: absolute;
+    bottom: 11mm;
+    left: 20mm;
+    font-size: 7pt;
+    color: #888;
+    font-family: 'Courier New', monospace;
+  }
+
+  .issued-date {
+    position: absolute;
+    bottom: 11mm;
+    right: 20mm;
+    font-size: 7pt;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+<div class="certificate">
+  <!-- Borders -->
+  <div class="outer-border"></div>
+  <div class="inner-border"></div>
+
+  <!-- Corner ornaments using unicode -->
+  <div class="corner tl">❧</div>
+  <div class="corner tr">❧</div>
+  <div class="corner bl">❧</div>
+  <div class="corner br">❧</div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-placeholder">COLLEGE<br/>LOGO</div>
+    <div class="college-info">
+      <div class="college-name">{{collegeName}}</div>
+      <div class="college-subtitle">{{collegeTagline}}</div>
+    </div>
+    <div class="logo-placeholder">IIC<br/>LOGO</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Event Title -->
+  <div class="event-section">
+    <div class="workshop-title">{{eventTitle}}</div>
+    <div class="organized-by">organized by</div>
+    <div class="iic-name">{{organiserName}}</div>
+  </div>
+
+  <!-- Certificate Badge -->
+  <div class="cert-badge">Certificate of Participation</div>
+
+  <!-- Body -->
+  <div class="body-text">
+    This is to certify that <span class="participant-name">{{participantName}}</span>
+    of <strong>{{department}}</strong> has attended
+    <span class="event-name-inline">'{{eventTitle}}'</span>
+    held on <strong>{{eventDate}}</strong> at <strong>{{venue}}</strong>.
+  </div>
+
+  <!-- Signatures -->
+  <div class="signatures">
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig1Name}}</div>
+      <div class="sig-title">{{sig1Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig2Name}}</div>
+      <div class="sig-title">{{sig2Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig3Name}}</div>
+      <div class="sig-title">{{sig3Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig4Name}}</div>
+      <div class="sig-title">{{sig4Title}}</div>
+    </div>
+  </div>
+
+  <div class="cert-id">Certificate ID: {{certificateId}}</div>
+  <div class="issued-date">Issued: {{issuedDate}}</div>
+</div>
+</body>
+</html>

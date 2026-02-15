@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Certificate of Participation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 297mm;
+    height: 210mm;
+    background: #0A1628;
+  }
+
+  .certificate {
+    width: 297mm;
+    height: 210mm;
+    background: #0A1628;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+  }
+
+  /* Gold corner accent top-left */
+  .accent-tl {
+    position: absolute;
+    top: 0; left: 0;
+    width: 60mm;
+    height: 60mm;
+    background: linear-gradient(135deg, #C9A84C 0%, transparent 60%);
+    opacity: 0.4;
+  }
+
+  /* Gold corner accent bottom-right */
+  .accent-br {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60mm;
+    height: 60mm;
+    background: linear-gradient(315deg, #C9A84C 0%, transparent 60%);
+    opacity: 0.4;
+  }
+
+  /* Side gold bar */
+  .gold-bar-left {
+    position: absolute;
+    left: 12mm;
+    top: 10mm;
+    bottom: 10mm;
+    width: 1.5mm;
+    background: linear-gradient(180deg, transparent, #C9A84C 30%, #C9A84C 70%, transparent);
+  }
+
+  .gold-bar-right {
+    position: absolute;
+    right: 12mm;
+    top: 10mm;
+    bottom: 10mm;
+    width: 1.5mm;
+    background: linear-gradient(180deg, transparent, #C9A84C 30%, #C9A84C 70%, transparent);
+  }
+
+  /* Top gold horizontal line */
+  .gold-line-top {
+    position: absolute;
+    top: 18mm;
+    left: 20mm;
+    right: 20mm;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C9A84C 20%, #C9A84C 80%, transparent);
+  }
+
+  .gold-line-bottom {
+    position: absolute;
+    bottom: 18mm;
+    left: 20mm;
+    right: 20mm;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C9A84C 20%, #C9A84C 80%, transparent);
+  }
+
+  /* College header */
+  .header {
+    position: absolute;
+    top: 10mm;
+    left: 22mm;
+    right: 22mm;
+    height: 25mm;
+    display: flex;
+    align-items: center;
+    gap: 6mm;
+  }
+
+  .logo-box {
+    width: 18mm;
+    height: 18mm;
+    border: 1px solid #C9A84C;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C9A84C;
+    font-size: 7px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  .college-details {
+    flex: 1;
+    text-align: center;
+  }
+
+  .college-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #C9A84C;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .college-sub {
+    font-size: 7pt;
+    color: #8DA5C5;
+    letter-spacing: 1px;
+    margin-top: 1mm;
+    text-transform: uppercase;
+  }
+
+  /* Center content */
+  .center-content {
+    position: absolute;
+    top: 38mm;
+    left: 22mm;
+    right: 22mm;
+    text-align: center;
+  }
+
+  .cert-label {
+    font-size: 8pt;
+    letter-spacing: 5px;
+    color: #8DA5C5;
+    text-transform: uppercase;
+  }
+
+  .cert-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26pt;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 1mm;
+    line-height: 1.1;
+  }
+
+  .cert-subtitle {
+    font-size: 8pt;
+    letter-spacing: 3px;
+    color: #C9A84C;
+    text-transform: uppercase;
+    margin-top: 2mm;
+  }
+
+  /* Horizontal gold divider */
+  .hr-gold {
+    margin: 4mm auto;
+    width: 40mm;
+    height: 2px;
+    background: #C9A84C;
+  }
+
+  /* Recipient section */
+  .recipient-label {
+    font-size: 8pt;
+    color: #8DA5C5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 5mm;
+  }
+
+  .recipient-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22pt;
+    color: #FFFFFF;
+    margin-top: 1mm;
+  }
+
+  .event-detail {
+    font-size: 9pt;
+    color: #B0C4DE;
+    margin-top: 3mm;
+    line-height: 1.7;
+  }
+
+  .highlight {
+    color: #C9A84C;
+    font-weight: 700;
+  }
+
+  /* Signatures */
+  .signatures {
+    position: absolute;
+    bottom: 22mm;
+    left: 22mm;
+    right: 22mm;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sig-block {
+    text-align: center;
+  }
+
+  .sig-line {
+    width: 36mm;
+    height: 1px;
+    background: rgba(201, 168, 76, 0.5);
+    margin: 0 auto 1.5mm;
+  }
+
+  .sig-name {
+    font-size: 8pt;
+    color: #C9A84C;
+    font-weight: 700;
+  }
+
+  .sig-role {
+    font-size: 7pt;
+    color: #8DA5C5;
+  }
+
+  .cert-id {
+    position: absolute;
+    bottom: 11mm;
+    left: 22mm;
+    font-size: 6.5pt;
+    color: #5C7A9A;
+    font-family: 'Courier New', monospace;
+  }
+
+  .issued-date {
+    position: absolute;
+    bottom: 11mm;
+    right: 22mm;
+    font-size: 6.5pt;
+    color: #5C7A9A;
+  }
+</style>
+</head>
+<body>
+<div class="certificate">
+  <div class="accent-tl"></div>
+  <div class="accent-br"></div>
+  <div class="gold-bar-left"></div>
+  <div class="gold-bar-right"></div>
+  <div class="gold-line-top"></div>
+  <div class="gold-line-bottom"></div>
+
+  <div class="header">
+    <div class="logo-box">COLLEGE<br/>LOGO</div>
+    <div class="college-details">
+      <div class="college-name">{{collegeName}}</div>
+      <div class="college-sub">{{collegeTagline}}</div>
+    </div>
+    <div class="logo-box">IIC<br/>LOGO</div>
+  </div>
+
+  <div class="center-content">
+    <div class="cert-label">This Certificate is Proudly Presented To</div>
+    <div class="recipient-name">{{participantName}}</div>
+    <div class="hr-gold"></div>
+    <div class="cert-title">Certificate of Participation</div>
+    <div class="event-detail">
+      For successfully participating in <span class="highlight">'{{eventTitle}}'</span><br/>
+      organized by <span class="highlight">{{organiserName}}</span> &bull;
+      Department of <span class="highlight">{{department}}</span><br/>
+      Held on <span class="highlight">{{eventDate}}</span> at <span class="highlight">{{venue}}</span>
+    </div>
+  </div>
+
+  <div class="signatures">
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig1Name}}</div>
+      <div class="sig-role">{{sig1Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig2Name}}</div>
+      <div class="sig-role">{{sig2Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig3Name}}</div>
+      <div class="sig-role">{{sig3Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig4Name}}</div>
+      <div class="sig-role">{{sig4Title}}</div>
+    </div>
+  </div>
+
+  <div class="cert-id">Certificate ID: {{certificateId}}</div>
+  <div class="issued-date">Issued: {{issuedDate}}</div>
+</div>
+</body>
+</html>
