@@ -10,12 +10,14 @@ const sendEmail = async ({ recipient, subject, html, attachments, text }) => {
     
     const transporter = nodemailer.createTransport({
       service: 'gmail',
-      port: 465,
-      secure: true,
+      port: 587,  // Changed from 465 to 587 for Render compatibility
+      secure: false,  // Use STARTTLS instead of direct SSL
       auth: {
         user: process.env.GMAIL_USER,  // Your Gmail address
         pass: process.env.GMAIL_PASS,  // Your Gmail password (use app password if 2FA is enabled)
       },
+      connectionTimeout: 10000,  // 10 seconds timeout for connection
+      socketTimeout: 10000,  // 10 seconds timeout for socket
     });
     console.log("[MAILER] Transporter created successfully");
 
@@ -35,7 +37,12 @@ const sendEmail = async ({ recipient, subject, html, attachments, text }) => {
     console.log('Email response: ' + info.response);
   } catch (error) {
     console.log("[MAILER] ERROR sending email:");
-    console.log(error);
+    console.log("Error message:", error.message);
+    console.log("Error code:", error.code);
+    if (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') {
+      console.log("[MAILER] Network timeout or connection refused - check Render firewall/network settings");
+    }
+    throw error;  // Re-throw to handle in calling function
   }
 };
 
