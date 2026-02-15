@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Certificate of Participation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 297mm;
+    height: 210mm;
+  }
+
+  .certificate {
+    width: 297mm;
+    height: 210mm;
+    background: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  /* Green left panel */
+  .left-panel {
+    position: absolute;
+    top: 0; left: 0;
+    width: 72mm;
+    height: 100%;
+    background: linear-gradient(160deg, #064E3B 0%, #065F46 50%, #047857 100%);
+  }
+
+  .left-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") repeat;
+  }
+
+  /* Right white content */
+  .right-panel {
+    position: absolute;
+    top: 0; left: 72mm;
+    right: 0;
+    height: 100%;
+    background: #FAFFFE;
+  }
+
+  /* Diagonal divider */
+  .divider-shape {
+    position: absolute;
+    top: 0;
+    left: 72mm;
+    width: 12mm;
+    height: 100%;
+    background: linear-gradient(160deg, #064E3B 0%, #065F46 100%);
+    clip-path: polygon(0 0, 40% 0, 100% 100%, 0 100%);
+    z-index: 5;
+  }
+
+  /* Left panel content */
+  .left-content {
+    position: absolute;
+    top: 0; left: 0;
+    width: 72mm;
+    height: 100%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10mm 8mm;
+    text-align: center;
+  }
+
+  .logo-circle {
+    width: 24mm;
+    height: 24mm;
+    border-radius: 50%;
+    border: 2px solid rgba(110,231,183,0.6);
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6EE7B7;
+    font-size: 7px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5mm;
+  }
+
+  .college-name-left {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #ECFDF5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .college-sub-left {
+    font-size: 6.5pt;
+    color: rgba(167,243,208,0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2mm;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .green-divider {
+    width: 20mm;
+    height: 2px;
+    background: rgba(110,231,183,0.5);
+    margin: 5mm auto;
+  }
+
+  .event-name-left {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 8pt;
+    color: #A7F3D0;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .organiser-left {
+    font-size: 7pt;
+    color: rgba(167,243,208,0.7);
+    margin-top: 2mm;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .logo-circle-bottom {
+    width: 18mm;
+    height: 18mm;
+    border-radius: 50%;
+    border: 1px solid rgba(110,231,183,0.4);
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6EE7B7;
+    font-size: 6px;
+    font-weight: 700;
+    margin-top: 6mm;
+  }
+
+  /* Right panel content */
+  .right-content {
+    position: absolute;
+    top: 0;
+    left: 87mm;
+    right: 10mm;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8mm 0;
+  }
+
+  .cert-of {
+    font-size: 8pt;
+    letter-spacing: 4px;
+    color: #6EE7B7;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .cert-title {
+    font-family: 'Merriweather', serif;
+    font-size: 24pt;
+    font-weight: 700;
+    color: #064E3B;
+    line-height: 1.1;
+    margin-top: 1mm;
+  }
+
+  .cert-subtitle {
+    font-size: 8pt;
+    letter-spacing: 2px;
+    color: #059669;
+    text-transform: uppercase;
+    margin-top: 2mm;
+    margin-bottom: 5mm;
+  }
+
+  .green-line {
+    width: 25mm;
+    height: 3px;
+    background: linear-gradient(90deg, #065F46, #6EE7B7);
+    margin-bottom: 5mm;
+  }
+
+  .awarded-to {
+    font-size: 8pt;
+    color: #6B7280;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .participant-name {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 20pt;
+    color: #064E3B;
+    margin: 1.5mm 0;
+  }
+
+  .detail-text {
+    font-size: 9.5pt;
+    color: #4B5563;
+    line-height: 1.8;
+    margin-top: 2mm;
+  }
+
+  .detail-highlight {
+    color: #065F46;
+    font-weight: 700;
+  }
+
+  /* Signatures */
+  .signatures {
+    position: absolute;
+    bottom: 16mm;
+    left: 87mm;
+    right: 10mm;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sig-block { text-align: center; }
+
+  .sig-line {
+    width: 32mm;
+    height: 1px;
+    background: #065F46;
+    margin: 0 auto 1.5mm;
+  }
+
+  .sig-name {
+    font-size: 7.5pt;
+    color: #064E3B;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .sig-role {
+    font-size: 6.5pt;
+    color: #6B7280;
+  }
+
+  .cert-id {
+    position: absolute;
+    bottom: 7mm;
+    left: 87mm;
+    font-size: 6pt;
+    color: #9CA3AF;
+    font-family: 'Courier New', monospace;
+  }
+
+  .issued-date {
+    position: absolute;
+    bottom: 7mm;
+    right: 10mm;
+    font-size: 6pt;
+    color: #9CA3AF;
+  }
+</style>
+</head>
+<body>
+<div class="certificate">
+  <div class="left-panel"></div>
+  <div class="right-panel"></div>
+  <div class="divider-shape"></div>
+
+  <div class="left-content">
+    <div class="logo-circle">COLLEGE<br/>LOGO</div>
+    <div class="college-name-left">{{collegeName}}</div>
+    <div class="college-sub-left">{{collegeTagline}}</div>
+    <div class="green-divider"></div>
+    <div class="event-name-left">"{{eventTitle}}"</div>
+    <div class="organiser-left">{{organiserName}}</div>
+    <div class="green-divider"></div>
+    <div class="logo-circle-bottom">IIC</div>
+  </div>
+
+  <div class="right-content">
+    <div class="cert-of">Proudly Presents</div>
+    <div class="cert-title">Certificate<br/>of<br/>Participation</div>
+    <div class="green-line"></div>
+    <div class="awarded-to">Awarded to</div>
+    <div class="participant-name">{{participantName}}</div>
+    <div class="detail-text">
+      <span class="detail-highlight">Department:</span> {{department}}<br/>
+      <span class="detail-highlight">Event:</span> {{eventTitle}}<br/>
+      <span class="detail-highlight">Date:</span> {{eventDate}} &bull; <span class="detail-highlight">Venue:</span> {{venue}}
+    </div>
+  </div>
+
+  <div class="signatures">
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig1Name}}</div>
+      <div class="sig-role">{{sig1Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig2Name}}</div>
+      <div class="sig-role">{{sig2Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig3Name}}</div>
+      <div class="sig-role">{{sig3Title}}</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">{{sig4Name}}</div>
+      <div class="sig-role">{{sig4Title}}</div>
+    </div>
+  </div>
+
+  <div class="cert-id">Certificate ID: {{certificateId}}</div>
+  <div class="issued-date">{{issuedDate}}</div>
+</div>
+</body>
+</html>
